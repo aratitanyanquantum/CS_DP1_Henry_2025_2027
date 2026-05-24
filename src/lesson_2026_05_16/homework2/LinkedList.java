@@ -2,7 +2,9 @@ package lesson_2026_05_16.homework2;
 
 public class LinkedList {
 
-    Node head;
+    public Node head;
+    public int size = 0;
+    public int max = 5;
 
     void traverse() {
         Node t = head;
@@ -28,7 +30,17 @@ public class LinkedList {
     }
 
     void insert(int k) {
+        if (isFull()) {
+            return;
+        }
+
         Node n = new Node(k);
+
+        if (head == null) {
+            head = n;
+            size++;
+            return;
+        }
 
         Node t = head;
 
@@ -37,9 +49,20 @@ public class LinkedList {
         }
 
         t.next = n;
+        size++;
     }
 
     void delete() {
+        if (head == null) {
+            return;
+        }
+
+        if (head.next == null) {
+            head = null;
+            size--;
+            return;
+        }
+
         Node t = head;
 
         while (t.next.next != null) {
@@ -47,35 +70,63 @@ public class LinkedList {
         }
 
         t.next = null;
+        size--;
     }
 
     void deleteByKey(int k) {
+        if (head == null) {
+            return;
+        }
+
+        if (head.key == k) {
+            head = head.next;
+            size--;
+            return;
+        }
+
         Node t = head;
 
-        while (t.next.key != k) {
+        while (t.next != null && t.next.key != k) {
             t = t.next;
         }
 
-        t.next = t.next.next;
+        if (t.next != null) {
+            t.next = t.next.next;
+            size--;
+        }
     }
 
-    public static void main(String[] args) {
-        LinkedList l = new LinkedList();
+    public void insertFirst(int k) {
+        if (isFull()) {
+            return;
+        }
 
-        l.insert(1);
-        l.insert(2);
-        l.insert(3);
+        Node n = new Node(k);
 
-        l.traverse();
+        n.next = head;
+        head = n;
 
-        l.search(2);
+        size++;
+    }
 
-        l.delete();
+    public int deleteFirst() {
+        if (isEmpty()) {
+            return -1;
+        }
 
-        l.traverse();
+        int k = head.key;
+        head = head.next;
 
-        l.deleteByKey(1);
+        size--;
 
-        l.traverse();
+        return k;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public boolean isFull() {
+        return size == max;
     }
 }
