@@ -1,5 +1,5 @@
 package lesson_2026_05_16.homework1;
-
+/*
 public class homework {
     //15a
     private int fiCount = 0;
@@ -70,4 +70,4 @@ public class homework {
     }
 }
 
-
+*/

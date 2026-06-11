@@ -1,5 +1,5 @@
 package lesson_2026_05_29;
-
+/*
 public class homework {
     // 14d
     public void updatePlacesFilled() {
@@ -80,3 +80,4 @@ public class homework {
         }
     }
 }
+*/

@@ -1,5 +1,5 @@
 package lesson_2026_05_22;
-
+/*
 public class homework {
 
     // 14e
@@ -63,3 +63,4 @@ public class homework {
         return toRemove.getCart();
     }
 }
+*/
